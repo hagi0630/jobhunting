@@ -1,0 +1,56 @@
+<h1>会社<%=type %></h1>
+
+<%= form_with model:company,local:true,method:method do |f| %>
+
+<div class="form-group">
+    <label>会社名</label>
+    <%=f.text_field :name,class: "form-control" %>
+</div>
+<div class="form-group">
+    <label>マイページURL</label>
+    <%=f.text_field :url,class: "form-control" %>
+</div>
+<div class="form-group">
+    <label>マイページID</label>
+    <%=f.text_field :mypage_id,class: "form-control" %>
+</div>
+<div class="form-group">
+    <label>マイページパスワード</label>
+    <%=f.text_field :mypage_pwd,class: "form-control" %>
+</div>
+<div class="form-group">
+    <label>タスク1</label>
+    <%=f.text_field :task1,class: "form-control" %>
+</div>
+<div class="form-group">
+    <label>期日1</label>
+    <%=f.datetime_field :due1,value:'2025-04-01',class: "form-control" %>
+</div>
+<div class="form-group">
+    <label>タスク2</label>
+    <%=f.text_field :task2,class: "form-control" %>
+</div>
+<div class="form-group">
+    <label>期日2</label>
+    <%=f.datetime_field :due2,class: "form-control" %>
+</div>
+<div class="form-group">
+    <label>タスク3</label>
+    <%=f.text_field :task3,class: "form-control" %>
+</div>
+<div class="form-group">
+    <label>期日3</label>
+    <%=f.datetime_field :due3,class: "form-control" %>
+</div>
+<div class="form-group">
+    <label>タスク4</label>
+    <%=f.text_field :task4,class: "form-control" %>
+</div>
+<div class="form-group">
+    <label>期日4</label>
+    <%=f.datetime_field :due4,class: "form-control" %>
+</div>
+
+<%= link_to "戻る",companies_path %>
+<%=f.submit type %>
+<% end %>

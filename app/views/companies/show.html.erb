@@ -1,0 +1,49 @@
+<h1>会社詳細</h1>
+<table>
+    <tr>
+        <th>会社名</th>
+        <td><%= link_to @company.name,@company.url %></td>
+    </tr>
+    <tr>
+        <th>マイページID</th>
+        <td><%=@company.mypage_id %></td>
+    </tr>
+    <tr>
+        <th>マイページパスワード</th>
+        <td><%=@company.mypage_pwd %></td>
+    </tr>
+    <tr>
+        <th>タスク1</th>
+        <td><%=@company.task1 %></td>
+    </tr>
+    <tr>
+        <th>期日1</th>
+        <td><%=@company.due1 %></td>
+    </tr>
+    <tr>
+        <th>タスク2</th>
+        <td><%=@company.task2 %></td>
+    </tr>
+    <tr>
+        <th>期日2</th>
+        <td><%=@company.due2 %></td>
+    </tr>
+    <tr>
+        <th>タスク3</th>
+        <td><%=@company.task3 %></td>
+    </tr>
+    <tr>
+        <th>期日3</th>
+        <td><%=@company.due3 %></td>
+    </tr>
+    <tr>
+        <th>タスク4</th>
+        <td><%=@company.task4 %></td>
+    </tr>
+    <tr>
+        <th>期日4</th>
+        <td><%=@company.due4 %></td>
+    </tr>
+    
+</table>
+<%=link_to "戻る",companies_path %>

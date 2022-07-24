@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jobhunting</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "companies", media: "all" %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta charset="UTF-8">
+    <% if session[:user_id].present? %>
+    <title>企業一覧</title>
+    <div class="header">
+      <div class="header-logo"><a href="/">就活Manager</a></div>
+      <div class="header-list">
+      <div class="header-listiamge"><img src="css/Furasuko.gif" alt=""></div> 
+          <div class="header-list1"><%= link_to "会社一覧", companies_path %></div>
+          <div class="header-list2"><a href = "Schedule.php">スケジュール</a></div>
+          <div class="header-list3"><%= link_to "ユーザー情報変更", edit_user_path %></div>
+          <div class="header-list4"><%= link_to "ログアウト", signout_path %></div>
+      </div>
+    </div>
+    <% end %>
+  </head>
+
+  <body>
+    <% if flash[:notice] %>
+    <div class="alert alert-success" role="alert">
+      <%=flash[:notice] %>
+    </div>
+    <% end %>
+    
+    <% if flash[:alert] %>
+    <div class="alert alert-danger" role="alert">
+      <%=flash[:alert] %>
+    </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

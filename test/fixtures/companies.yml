@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  name: MyString
+  url: MyString
+  mypage_id: MyString
+  mypage_pwd: MyString
+  task1: MyString
+  due1: 2022-07-19 15:12:10
+  task2: MyString
+  due2: 2022-07-19 15:12:10
+  task3: MyString
+  due3: 2022-07-19 15:12:10
+  task4: MyString
+  due4: 2022-07-19 15:12:10
+
+two:
+  user_id: 1
+  name: MyString
+  url: MyString
+  mypage_id: MyString
+  mypage_pwd: MyString
+  task1: MyString
+  due1: 2022-07-19 15:12:10
+  task2: MyString
+  due2: 2022-07-19 15:12:10
+  task3: MyString
+  due3: 2022-07-19 15:12:10
+  task4: MyString
+  due4: 2022-07-19 15:12:10
