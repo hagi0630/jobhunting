@@ -13,6 +13,7 @@ class CompaniesController < ApplicationController
     def show
     end
     
+    # 新規作成
     def new
         @company = Company.new
     end
