@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   patch "/companies/:id",to: "companies#update"  #会社情報更新
   delete "/companies/:id", to: "companies#destroy"  #会社情報消去
   
+  get "/schedule", to: "companies#schedule", as:"schedule"  #スケジュール画面
+  
   get "/signup", to: "users#new"  #ユーザー新規登録画面へ
   post "/signup", to: "users#create"  #ユーザー新規登録
   get "/users/edit", to: "users#edit", as: "edit_user"  #ユーザー情報編集画面へ

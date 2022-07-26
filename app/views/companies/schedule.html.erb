@@ -1,0 +1,28 @@
+<!--スケジュール画面-->
+
+<h1>スケジュール</h1>
+
+<table>
+    <tr>
+        <th>会社名</th>
+        <th>マイページID</th>
+        <th>マイページパスワード</th>
+        <th>タスク</th>
+        <th>期日</th>
+        <th>リンク</th>
+    </tr>
+    <% @companies.each do |company| %>
+    <tr>
+        <td><%= link_to company[:name],company[:url] %></td>
+        <td><%=company[:mypage_id] %></td>
+        <td><%=company[:mypage_pwd] %></td>
+        <td><%=company[:task] %></td>
+        <td><%=company[:due] %></td>
+        <td>
+            <%=link_to "編集",edit_company_path(company) %>
+            <!--削除する際はrailsのconfirm機を使って確認しています-->
+            <%=link_to "削除",company_path(company), method: "delete", data:{confirm:"本当に削除しますか?"} %>
+        </td>
+    </tr>
+    <% end %>
+</table>

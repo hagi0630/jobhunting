@@ -53,6 +53,20 @@ class CompaniesController < ApplicationController
         end
     end
     
+    
+    def schedule
+        companies = Company.where(user_id: session[:user_id])
+        task_due_array = []
+        companies.each do |company|
+            task_due_array.push(id:company.id,name:company.name,url:company.url,mypage_id:company.mypage_id,mypage_pwd:company.mypage_pwd,task:company.task1,due:company.due1)
+            task_due_array.push(id:company.id,name:company.name,url:company.url,mypage_id:company.mypage_id,mypage_pwd:company.mypage_pwd,task:company.task2,due:company.due2)
+            task_due_array.push(id:company.id,name:company.name,url:company.url,mypage_id:company.mypage_id,mypage_pwd:company.mypage_pwd,task:company.task3,due:company.due3)
+            task_due_array.push(id:company.id,name:company.name,url:company.url,mypage_id:company.mypage_id,mypage_pwd:company.mypage_pwd,task:company.task4,due:company.due4)
+        end
+        @companies = task_due_array
+    end
+    
+    
     # 会社情報を削除する
     def destroy
         @company.destroy
@@ -66,5 +80,6 @@ class CompaniesController < ApplicationController
     def set_company
         @company = Company.where(user_id: session[:user_id]).find(params[:id])
     end    
+    
     
 end
