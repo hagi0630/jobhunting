@@ -28,7 +28,7 @@ class UsersController < ApplicationController
          user_params = params.require(:user).permit(:login_id)
          if @user.update(user_params)
              flash[:notice] = "更新しました"
-             redirect_to companies
+             redirect_to companies_path
          else
              flash.now[:alert] = "更新に失敗しました"
              render "edit"
