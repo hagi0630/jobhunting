@@ -1,3 +1,4 @@
+<!--全ての画面に当てはまるviewを書くファイル-->
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,6 +9,7 @@
     <%= stylesheet_link_tag "companies", media: "all" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta charset="UTF-8">
+    <!--セッションIDがある、つまりログイン画面以降のとき-->
     <% if session[:user_id].present? %>
     <title>企業一覧</title>
     <div class="header">
@@ -24,6 +26,7 @@
   </head>
 
   <body>
+    <!--更新に成功しましたなどを表示-->
     <% if flash[:notice] %>
     <div class="alert alert-success" role="alert">
       <%=flash[:notice] %>

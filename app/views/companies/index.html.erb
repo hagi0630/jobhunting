@@ -1,3 +1,4 @@
+<!--会社一覧画面-->
 <h1>会社一覧</h1>
 
 <%= form_with method: "get",local: true do |f| %>
@@ -12,6 +13,8 @@
 
 <br>
 <%=link_to "新規登録",new_company_path %>
+<!--全て表示すると文字が2行になるなどするのでタスク3～期限4は一覧画面からは見えないようになっています。-->
+<!--ただ、それはそれで不便な点もある気がしていて、、-->
 <table>
     <tr>
         <th>会社名</th>
@@ -21,10 +24,10 @@
         <th>期日1</th>
         <th>タスク2</th>
         <th>期日2</th>
-        <th>タスク3</th>
-        <th>期日3</th>
-        <th>タスク4</th>
-        <th>期日4</th>
+        <!--<th>タスク3</th>-->
+        <!--<th>期日3</th>-->
+        <!--<th>タスク4</th>-->
+        <!--<th>期日4</th>-->
         <th>リンク</th>
     </tr>
     <% @companies.each do |company| %>
@@ -36,13 +39,10 @@
         <td><%=company.due1 %></td>
         <td><%=company.task2 %></td>
         <td><%=company.due2 %></td>
-        <td><%=company.task3 %></td>
-        <td><%=company.due3 %></td>
-        <td><%=company.task4 %></td>
-        <td><%=company.due4 %></td>
         <td>
             <%=link_to "詳細",company_path(company) %>
             <%=link_to "編集",edit_company_path(company) %>
+            <!--削除する際はrailsのconfirm機を使って確認しています-->
             <%=link_to "削除",company_path(company), method: "delete", data:{confirm:"本当に削除しますか?"} %>
         </td>
     </tr>
