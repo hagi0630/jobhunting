@@ -4,6 +4,7 @@
             <h1>REGISTER</h1>
             <p>UserID、Passwordをご入力の上、「REGISTER」ボタンをクリックしてください。</p>
         </div>
+        <%= link_to "ログインへ", signin_path,class:"blue_color"%>
         <div class="login_form_btm">
             <%= f.text_field :login_id,  placeholder:"UserID(20字以内)",maxlength:"20", required: true %>
             <%= f.password_field :password,  placeholder:"Password(20字以内)",maxlength:"20", required: true %>
