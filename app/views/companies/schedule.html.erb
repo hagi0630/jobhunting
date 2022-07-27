@@ -19,8 +19,8 @@
         <td><%=company[:task] %></td>
         <td><%=company[:due] %></td>
         <td>
-            <%=link_to "編集",edit_company_path(company) %>
-            <!--削除する際はrailsのconfirm機を使って確認しています-->
+            <%=link_to "会社詳細",schedule_company_path(:id => company[:id]) %>
+            <!--削除する際はrailsのconfirm機能を使って確認しています-->
             <%=link_to "完了",schedule_path(company), method: "delete", data:{confirm:"本当に削除しますか?"} %>
         </td>
     </tr>

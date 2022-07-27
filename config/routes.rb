@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   
   get "/schedule", to: "companies#schedule", as:"schedule"  #スケジュール画面
   delete "/schedule", to: "companies#complete"  #スケジュール完了
+  get "/schedule/:id", to: "companies#schedule_company", as:"schedule_company"  #スケジュール画面から会社詳細画面へ
   
   get "/signup", to: "users#new"  #ユーザー新規登録画面へ
   post "/signup", to: "users#create"  #ユーザー新規登録

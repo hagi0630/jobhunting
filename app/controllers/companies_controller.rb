@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
     # 会社を1つ選ぶ処理
-    before_action :set_company,only: [:show,:edit,:update,:complete,:destroy]
+    before_action :set_company,only: [:show,:edit,:update,:complete,:destroy,:schedule_company]
     # application_controlle.rbr参照
     before_action :redirect_to_signin
     
@@ -79,6 +79,8 @@ class CompaniesController < ApplicationController
     # スケジュール完了。対応するtaskとdueを消す
     def complete
         # dueとtaskは消したところから1つずつずらす
+            @company.task4=nil
+            @company.due4=nil
         if @company.task1==params[:task] && @company.due1==params[:due]
             @company.task1=@company.task2
             @company.due1=@company.due2
@@ -86,28 +88,23 @@ class CompaniesController < ApplicationController
             @company.due2=@company.due3
             @company.task3=@company.task4
             @company.due3=@company.due4
-            @company.task4=nil
-            @company.due4=nil
         elsif @company.task2==params[:task] && @company.due2==params[:due]
             @company.task2=@company.task3
             @company.due2=@company.due3
             @company.task3=@company.task4
             @company.due3=@company.due4
-            @company.task4=nil
-            @company.due4=nil
         elsif @company.task3==params[:task] && @company.due3==params[:due]
             @company.task3=@company.task4
             @company.due3=@company.due4
-            @company.task4=nil
-            @company.due4=nil
-        elsif @company.task4==params[:task] && @company.due4==params[:due]
-            @company.task4=nil
-            @company.due4=nil
         end
         @company.save
         redirect_to schedule_path
     end
     
+    
+    # スケジュール画面から会社詳細画面へ
+    def schedule_company
+    end
     
     # 会社情報を削除する
     def destroy
