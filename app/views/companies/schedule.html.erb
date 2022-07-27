@@ -21,7 +21,7 @@
         <td>
             <%=link_to "編集",edit_company_path(company) %>
             <!--削除する際はrailsのconfirm機を使って確認しています-->
-            <%=link_to "削除",company_path(company), method: "delete", data:{confirm:"本当に削除しますか?"} %>
+            <%=link_to "完了",schedule_path(company), method: "delete", data:{confirm:"本当に削除しますか?"} %>
         </td>
     </tr>
     <% end %>

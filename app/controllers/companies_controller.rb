@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
     # 会社を1つ選ぶ処理
-    before_action :set_company,only: [:show,:edit,:update,:destroy]
+    before_action :set_company,only: [:show,:edit,:update,:complete,:destroy]
     # application_controlle.rbr参照
     before_action :redirect_to_signin
     
@@ -58,12 +58,53 @@ class CompaniesController < ApplicationController
         companies = Company.where(user_id: session[:user_id])
         task_due_array = []
         companies.each do |company|
+            if company[:task1].present? && company[:due1].present?
             task_due_array.push(id:company.id,name:company.name,url:company.url,mypage_id:company.mypage_id,mypage_pwd:company.mypage_pwd,task:company.task1,due:company.due1)
+            end
+            if company[:task2].present? && company[:due2].present?
             task_due_array.push(id:company.id,name:company.name,url:company.url,mypage_id:company.mypage_id,mypage_pwd:company.mypage_pwd,task:company.task2,due:company.due2)
+            end
+            if company[:task3].present? && company[:due3].present?
             task_due_array.push(id:company.id,name:company.name,url:company.url,mypage_id:company.mypage_id,mypage_pwd:company.mypage_pwd,task:company.task3,due:company.due3)
+            end
+            if company[:task4].present? && company[:due4].present?
             task_due_array.push(id:company.id,name:company.name,url:company.url,mypage_id:company.mypage_id,mypage_pwd:company.mypage_pwd,task:company.task4,due:company.due4)
+            end
         end
+        task_due_array = task_due_array.sort_by {|x| x[:due]}
         @companies = task_due_array
+    end
+    
+    
+    # スケジュール完了。対応するtaskとdueを消す
+    def complete
+        if @company.task1==params[:task] && @company.due1==params[:due]
+            @company.task1=@company.task2
+            @company.due1=@company.due2
+            @company.task2=@company.task3
+            @company.due2=@company.due3
+            @company.task3=@company.task4
+            @company.due3=@company.due4
+            @company.task4=nil
+            @company.due4=nil
+        elsif @company.task2==params[:task] && @company.due2==params[:due]
+            @company.task2=@company.task3
+            @company.due2=@company.due3
+            @company.task3=@company.task4
+            @company.due3=@company.due4
+            @company.task4=nil
+            @company.due4=nil
+        elsif @company.task3==params[:task] && @company.due3==params[:due]
+            @company.task3=@company.task4
+            @company.due3=@company.due4
+            @company.task4=nil
+            @company.due4=nil
+        elsif @company.task4==params[:task] && @company.due4==params[:due]
+            @company.task4=nil
+            @company.due4=nil
+        end
+        @company.save
+        redirect_to schedule_path
     end
     
     
