@@ -78,6 +78,7 @@ class CompaniesController < ApplicationController
     
     # スケジュール完了。対応するtaskとdueを消す
     def complete
+        # 1つずつずらす
         if @company.task1==params[:task] && @company.due1==params[:due]
             @company.task1=@company.task2
             @company.due1=@company.due2
