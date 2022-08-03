@@ -17,4 +17,5 @@ Rails.application.config.assets.precompile += %w(
     users.scss
     sessioni.scss
     companies.scss
+    password_comfirm.js
     )

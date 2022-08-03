@@ -1,6 +1,9 @@
-<!--会社の新規登録画面(new.html.erb)と更新画面(edit.html.erb)をこのページに書いています。-->
+<!--会社の新規登録画面(new.html.erb)と更新画面(.html.erb)をこのページに書いています。-->
 <h1>会社<%=type %></h1>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- jQuery-datetimepicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" integrity="sha512-bYPO5jmStZ9WI2602V2zaivdAnbAhtfzmxnEGh9RwtlI00I9s8ulGe4oBa5XxiC6tCITJH/QG70jswBhbLkxPw==" crossorigin="anonymous" />
 <%= form_with model:company,local:true,method:method do |f| %>
 
 <div class="form-group">
@@ -25,7 +28,7 @@
 </div>
 <div class="form-group">
     <label>期日1</label>
-    <%=f.datetime_field :due1,value:'2025-04-01',class: "form-control" %>
+    <%=f.text_field :due1,class: "datetimepicker form-control", autocomplete: "off"%>
 </div>
 <div class="form-group">
     <label>タスク2</label>
@@ -33,7 +36,7 @@
 </div>
 <div class="form-group">
     <label>期日2</label>
-    <%=f.datetime_field :due2,class: "form-control" %>
+    <%=f.datetime_field :due2,class: "datetimepicker form-control", autocomplete: "off" %>
 </div>
 <div class="form-group">
     <label>タスク3</label>
@@ -41,7 +44,7 @@
 </div>
 <div class="form-group">
     <label>期日3</label>
-    <%=f.datetime_field :due3,class: "form-control" %>
+    <%=f.datetime_field :due3,class: "datetimepicker form-control", autocomplete: "off" %>
 </div>
 <div class="form-group">
     <label>タスク4</label>
@@ -49,9 +52,17 @@
 </div>
 <div class="form-group">
     <label>期日4</label>
-    <%=f.datetime_field :due4,class: "form-control" %>
+    <%=f.datetime_field :due4,class: "datetimepicker form-control", autocomplete: "off" %>
 </div>
 
 <%= link_to "戻る",companies_path %>
 <%=f.submit type %>
 <% end %>
+
+<script>
+$(function() {
+  $('.datetimepicker').datetimepicker({
+    step:30, // 30分刻み
+  });
+});
+</script>
