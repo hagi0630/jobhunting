@@ -31,7 +31,7 @@ class CompaniesController < ApplicationController
             flash[:notice] = "会社を1件登録しました"
             redirect_to companies_path
         else
-            flash.now[:alert] = "登録に失敗しました"
+            flash.now[:alert] = "登録に失敗しました。会社名を入れていないか既にある会社名ではないですか？"
             render :new
         end
     end
@@ -53,11 +53,15 @@ class CompaniesController < ApplicationController
         end
     end
     
+    def schedule_add
+    end
     
     def schedule
         companies = Company.where(user_id: session[:user_id])
         task_due_array = []
+        companies_name = []
         companies.each do |company|
+            companies_name.push(company.name)
             if company[:task1].present? && company[:due1].present?
             task_due_array.push(id:company.id,name:company.name,url:company.url,mypage_id:company.mypage_id,mypage_pwd:company.mypage_pwd,task:company.task1,due:company.due1)
             end
@@ -73,6 +77,8 @@ class CompaniesController < ApplicationController
         end
         task_due_array = task_due_array.sort_by {|x| x[:due]}
         @companies = task_due_array
+        @schedule = Company.new
+        @companies_name = companies_name.uniq
     end
     
     
@@ -106,6 +112,29 @@ class CompaniesController < ApplicationController
     def schedule_company
     end
     
+    def new_schedule
+        company_params = params.require(:company).permit(:name,:task,:due)
+        company = Company.where(user_id: session[:user_id]).find_by(name:company_params[:name])
+        if company.task1.blank? && company.due1.blank?
+            company.task1 = company_params[:task]
+            company.due1 = company_params[:due]
+        elsif company.task2.blank? && company.due2.blank?
+            company.task2 = company_params[:task]
+            company.due2 = company_params[:due]
+        elsif company.task3.blank? && company.due3.blank?
+            company.task3 = company_params[:task]
+            company.due3 = company_params[:due]
+        elsif company.task4.blank? && company.due4.blank?
+            company.task4 = company_params[:task]
+            company.due4 = company_params[:due]
+        else
+            flash[:alert] = "taskとdueが満杯です。"
+        end
+        company.save
+        redirect_to schedule_path
+    end
+    # {"name"=>"freee", "task"=>"aa", "due"=>"2022/08/29 02:00"}
+
     # 会社情報を削除する
     def destroy
         @company.destroy

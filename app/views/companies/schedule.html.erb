@@ -1,6 +1,31 @@
 <!--スケジュール画面-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- jQuery-datetimepicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" integrity="sha512-bYPO5jmStZ9WI2602V2zaivdAnbAhtfzmxnEGh9RwtlI00I9s8ulGe4oBa5XxiC6tCITJH/QG70jswBhbLkxPw==" crossorigin="anonymous" />
 
 <h1>スケジュール</h1>
+
+<h3>スケジュール追加</h3>
+    <%= form_with model:@schedule,url:create_schedule_path,local:true,method:"post" do |f| %>
+    <div class="form-group">
+    <label>会社名</label>
+    <%=f.select :name,@companies_name, {include_blank: '---'},class: "form-control" %>
+</div>
+<div class="form-group">
+    <label>タスク</label>
+    <%=f.text_field :task,class: "form-control" %>
+</div>
+<div class="form-group">
+    <label>期日</label>
+    <%=f.text_field :due,class: "datetimepicker form-control", autocomplete: "off"%>
+</div>
+
+    <%=f.submit "登録" %>
+    <% end %>
+
+
+
 
 <table>
     <tr>
@@ -11,6 +36,8 @@
         <th>期日</th>
         <th>リンク</th>
     </tr>
+    
+    
     <% @companies.each do |company| %>
     <tr>
         <td><%= link_to company[:name],company[:url] %></td>
@@ -26,3 +53,11 @@
     </tr>
     <% end %>
 </table>
+
+<script>
+$(function() {
+  $('.datetimepicker').datetimepicker({
+    step:30, // 30分刻み
+  });
+});
+</script>

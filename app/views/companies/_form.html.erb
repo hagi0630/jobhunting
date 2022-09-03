@@ -36,7 +36,7 @@
 </div>
 <div class="form-group">
     <label>期日2</label>
-    <%=f.datetime_field :due2,class: "datetimepicker form-control", autocomplete: "off" %>
+    <%=f.text_field :due2,class: "datetimepicker form-control", autocomplete: "off" %>
 </div>
 <div class="form-group">
     <label>タスク3</label>
@@ -44,7 +44,7 @@
 </div>
 <div class="form-group">
     <label>期日3</label>
-    <%=f.datetime_field :due3,class: "datetimepicker form-control", autocomplete: "off" %>
+    <%=f.text_field :due3,class: "datetimepicker form-control", autocomplete: "off" %>
 </div>
 <div class="form-group">
     <label>タスク4</label>
@@ -52,7 +52,11 @@
 </div>
 <div class="form-group">
     <label>期日4</label>
-    <%=f.datetime_field :due4,class: "datetimepicker form-control", autocomplete: "off" %>
+    <%=f.text_field :due4,class: "datetimepicker form-control", autocomplete: "off" %>
+</div>
+<div class="form-group">
+    <label>メモ（ESの内容を書いたり、面接で言おうと思っていることなど自由に記入してください）</label>
+    <%= f.text_area :memo, class: "form-control", size: "100x10" %>
 </div>
 
 <%= link_to "戻る",companies_path %>
