@@ -1,3 +1,5 @@
 tmp/
 log/gibo 2.2.7 by Simon Whitaker
+db/development.sqlite3
+log/development.log
 https://github.com/simonwhitaker/gibo
