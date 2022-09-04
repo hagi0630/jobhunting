@@ -14,11 +14,11 @@ class CompaniesController < ApplicationController
     
   REDIRECT_URI = "https://1206095f41114a99811deaf0e84e0e18.vfs.cloud9.ap-northeast-1.amazonaws.com/oauth2callback".freeze
   APPLICATION_NAME = "就活Manager".freeze
-  CLIENT_SECRET_PATH = "client_secret.json".freeze
+  CLIENT_SECRET_PATH = "jobhunting_sub/client_secret.json".freeze
   # The file token.yaml stores the user's access and refresh tokens, and is
   # created automatically when the authorization flow completes for the first
   # time.
-  TOKEN_PATH = "credentials.yaml".freeze
+  TOKEN_PATH = "jobhunting_sub/credentials.yaml".freeze
   SCOPE = Google::Apis::CalendarV3::AUTH_CALENDAR
   MY_CALENDAR_ID = 'primary'
   TIME_ZONE = 'Japan'
@@ -104,8 +104,6 @@ class CompaniesController < ApplicationController
     # スケジュール完了。対応するtaskとdueを消す
     def complete
         # dueとtaskは消したところから1つずつずらす
-            @company.task4=nil
-            @company.due4=nil
         if @company.task1==params[:task] && @company.due1==params[:due]
             @company.task1=@company.task2
             @company.due1=@company.due2
@@ -122,6 +120,9 @@ class CompaniesController < ApplicationController
             @company.task3=@company.task4
             @company.due3=@company.due4
         end
+        @company.task4=nil
+        @company.due4=nil
+
         @company.save
         redirect_to schedule_path
     end

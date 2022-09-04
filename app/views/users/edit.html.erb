@@ -1,13 +1,14 @@
 <!--会員情報変更画面-->
+<br>
 <h1>会員情報更新</h1>
 <%= form_with model: @user, url:user_path, method: "patch", local: true do |f| %>
 
  <div class="form-group">
      <label>ユーザーID</label>
-     <%= f.text_field :login_id, class: "form-control" %>
+     <%= f.text_field :login_id %>
  </div>
 
- <%= link_to "戻る", companies_path %>
+ <%= link_to "戻る", companies_path , class: "btn btn-secondary"%>
  <%= f.submit "更新", class: "btn btn-primary"%>
 
 <% end %>

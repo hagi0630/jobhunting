@@ -1,6 +1,7 @@
 <!--1つの会社情報を全て表示する画面。show.html.erbとschedule_company.html.erbで使用-->
+<br>
 <h1>会社詳細</h1>
-<table>
+<table class="table table-striped">
     <tr>
         <th>会社名</th>
         <td><%= link_to @company.name,@company.url %></td>
@@ -47,4 +48,4 @@
     </tr>
     
 </table>
-<%=link_to "戻る",return_path %>
+<%=link_to "戻る",return_path, class: "btn btn-secondary" %>

@@ -1,21 +1,22 @@
 <!--会社一覧画面-->
+<br>
 <h1>会社一覧</h1>
 
 <%= form_with method: "get",local: true do |f| %>
 <%= f.text_field "name", placeholder: "会社名を入力" %>
 <br>
-<%=f.submit "検索" %>
+<%=f.submit "検索" , class: "btn btn-success"%>
 <% end %>
 
 <%= form_with method: "get",local: true do |f| %>
-<%=f.submit "検索クリア" %>
+<%=f.submit "検索クリア" , class: "btn btn-secondary"%>
 <% end %>
 
 <br>
-<%=link_to "新規登録",new_company_path %>
+<%=link_to "新規登録",new_company_path,class:"btn btn-primary btn-lg" %>
 <!--全て表示すると文字が2行になるなどするのでタスク3～期限4は一覧画面からは見えないようになっています。-->
 <!--ただ、それはそれで不便な点もある気がしていて、、-->
-<table>
+<table class="table table-striped">
     <tr>
         <th>会社名</th>
         <th>マイページID</th>
@@ -40,10 +41,10 @@
         <td><%=company.task2 %></td>
         <td><%=company.due2 %></td>
         <td>
-            <%=link_to "詳細",company_path(company) %>
-            <%=link_to "編集",edit_company_path(company) %>
+            <%=link_to "詳細",company_path(company),class:"btn btn-info"%>
+            <%=link_to "編集",edit_company_path(company),class:"btn btn-warning" %>
             <!--削除する際はrailsのconfirm機を使って確認しています-->
-            <%=link_to "削除",company_path(company), method: "delete", data:{confirm:"本当に削除しますか?"} %>
+            <%=link_to "削除",company_path(company), method: "delete", data:{confirm:"本当に削除しますか?"},class:"btn btn-danger" %>
         </td>
     </tr>
     <% end %>

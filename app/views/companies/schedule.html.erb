@@ -3,31 +3,31 @@
     <!-- jQuery-datetimepicker -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" integrity="sha512-bYPO5jmStZ9WI2602V2zaivdAnbAhtfzmxnEGh9RwtlI00I9s8ulGe4oBa5XxiC6tCITJH/QG70jswBhbLkxPw==" crossorigin="anonymous" />
-
+<br>
 <h1>スケジュール</h1>
-
+<br>
 <h3>スケジュール追加</h3>
     <%= form_with model:@schedule,url:create_schedule_path,local:true,method:"post" do |f| %>
     <div class="form-group">
     <label>会社名</label>
-    <%=f.select :name,@companies_name, {include_blank: '---'},class: "form-control" %>
+    <%=f.select :name,@companies_name, {include_blank: '---'} %>
 </div>
 <div class="form-group">
     <label>タスク</label>
-    <%=f.text_field :task,class: "form-control" %>
+    <%=f.text_field :task %>
 </div>
 <div class="form-group">
     <label>期日</label>
-    <%=f.text_field :due,class: "datetimepicker form-control", autocomplete: "off"%>
+    <%=f.text_field :due,class: "datetimepicker", autocomplete: "off"%>
 </div>
 
-    <%=f.submit "登録" %>
+    <%=f.submit "登録", class:"btn btn-primary"%>
     <% end %>
 
 
 
 
-<table>
+<table class="table table-striped">
     <tr>
         <th>会社名</th>
         <th>マイページID</th>
@@ -46,9 +46,9 @@
         <td><%=company[:task] %></td>
         <td><%=company[:due] %></td>
         <td>
-            <%=link_to "会社詳細",schedule_company_path(:id => company[:id]) %>
+            <%=link_to "会社詳細",schedule_company_path(:id => company[:id]) ,class:"btn btn-info"%>
             <!--削除する際はrailsのconfirm機能を使って確認しています-->
-            <%=link_to "完了",schedule_path(company), method: "delete", data:{confirm:"本当に削除しますか?"} %>
+            <%=link_to "完了",schedule_path(company), method: "delete", data:{confirm:"本当に削除しますか?"},class:"btn btn-danger"%>
         </td>
     </tr>
     <% end %>
