@@ -1,8 +1,8 @@
 就活にあたり、企業のマイページのIDやパスワード、タスク、期日などを管理できるアプリケーションです。
 
 セットアップは以下参照 
-（編集可用：○の箇所は個別に共有します）https://docs.google.com/spreadsheets/d/14gBbfl_geGfKWvNs4jQNX-a4thjUZNc1nD1GsO_q○○○/edit#gid=2077134719　 
-（閲覧のみ）https://docs.google.com/spreadsheets/d/1apKD-H0rcGiALpgucaaqQwFuUpP0KhYFWx4jmVCGXrw/edit#gid=2077134719　
+- （編集可用：○の箇所は個別に共有します）https://docs.google.com/spreadsheets/d/14gBbfl_geGfKWvNs4jQNX-a4thjUZNc1nD1GsO_q○○○/edit#gid=2077134719　 
+- （閲覧のみ）https://docs.google.com/spreadsheets/d/1apKD-H0rcGiALpgucaaqQwFuUpP0KhYFWx4jmVCGXrw/edit#gid=2077134719　
 
 This README would normally document whatever steps are necessary to get the application up and running.
 
