@@ -2,4 +2,6 @@ tmp/
 log/gibo 2.2.7 by Simon Whitaker
 db/development.sqlite3
 log/development.log
+credentials.yaml
+client_secret.json
 https://github.com/simonwhitaker/gibo
