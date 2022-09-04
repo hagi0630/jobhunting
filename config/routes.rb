@@ -14,9 +14,7 @@ Rails.application.routes.draw do
   get "/schedule/:id", to: "companies#schedule_company", as:"schedule_company"  #スケジュール画面から会社詳細画面へ
   post "/schedule/new", to: "companies#new_schedule", as:"create_schedule"  #スケジュール画面から新規スケジュール登録
   
-  get "calendar/index", to:"calendar#index"
-  get "oauth2callback", to:"calendar#callback"
-  get "calendar/register", to:"calendar#register"
+  get "oauth2callback", to: "companies#callback"
 
   get "/signup", to: "users#new"  #ユーザー新規登録画面へ
   post "/signup", to: "users#create"  #ユーザー新規登録
