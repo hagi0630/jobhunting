@@ -72,9 +72,6 @@ class CompaniesController < ApplicationController
         end
     end
     
-    def schedule_add
-    end
-    
     def schedule
         companies = Company.where(user_id: session[:user_id])
         task_due_array = []
