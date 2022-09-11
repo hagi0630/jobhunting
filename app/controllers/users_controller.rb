@@ -11,6 +11,10 @@ class UsersController < ApplicationController
     def create
         user_params = params.require(:user).permit(:login_id,:password,:password_confirmation)
         @user = User.new(user_params)
+        logger.debug("!!!!")
+        logger.debug(user_params)
+        logger.debug(@user.password.present?)
+        logger.debug(@user.password_confirmation)
         if @user.save
             flash[:notice] = "登録しました"
             redirect_to signin_path

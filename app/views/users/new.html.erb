@@ -9,30 +9,27 @@
         <%= link_to "ログインへ", signin_path,class:"blue_color"%>
         <div class="login_form_btm">
             <%= f.text_field :login_id,  placeholder:"UserID(20字以内)",maxlength:"20", required: true %>
-            <%= f.password_field :password, name:"pwd", id:"pwd1",  placeholder:"Password(20字以内)",maxlength:"20", required: true %>
-            <%= f.password_field :password_confirmation, name:"pwdConfirm", id:"pwd2",  placeholder:"Password(確認用)",maxlength:"20",oninput:"CheckPassword()", required: true %>
+            <%= f.password_field :password, name:"pwd", id:"pwd1",  placeholder:"Password(20字以内)",maxlength:"20",oninput:"CheckPasswordLength()",required: true %>
+            <%= f.password_field :password_confirmation, name:"pwdConfirm", id:"pwd2",  placeholder:"Password(確認用)",maxlength:"20",oninput:"CheckPasswordMatch()", required: true %>
             <%= f.submit "REGISTER",name:"botton" %>
-            <!--<input type="text" name="id" placeholder="UserID(20字以内)" maxlength="20" required>-->
-            <!--<input type="password" name="pwd" id="pwd1" placeholder="Password(20字以内)" maxlength="20" required>-->
-            <!--<input type="password" name="pwdConfirm" id="pwd2" placeholder="Password(確認用)" maxlength="20" oninput="CheckPassword()" required>-->
-            <!--<input type="submit" name="botton" value="REGISTER">-->
-            <!--<input type="submit" name="botton" value="BACK" formaction="index.html" formnovalidate>-->
         </div>
         <% end %>
     </form>
-<script>
-        var form = document.forms[0];
-        function CheckPassword() {
-            // エラーメッセージをクリアする
-            form.pwd2.setCustomValidity("");
-            // パスワードの一致確認
-            if (form.pwd1.value != form.pwd2.value) {
-                // 一致していなかったら、エラーメッセージを表示する
-                form.pwd2.setCustomValidity("パスワードと確認用パスワードが一致しません");
-            }
-        };
-        // 入力値チェックエラーが発生したときの処理
-        form.addEventListener("invalid", function() {
-            document.getElementById("errorMessage").innerHTML = "入力値にエラーがあります";
-        }, false);
-    </script>
+// <script>
+//         var form = document.forms[0];
+        
+
+//         function CheckPasswordMatch() {
+//             // エラーメッセージをクリアする
+//             form.pwd2.setCustomValidity("");
+//             // パスワードの一致確認
+//             if (form.pwd1.value != form.pwd2.value) {
+//                 // 一致していなかったら、エラーメッセージを表示する
+//                 form.pwd2.setCustomValidity("パスワードと確認用パスワードが一致しません");
+//             }
+//         };
+//         // 入力値チェックエラーが発生したときの処理
+//         form.addEventListener("invalid", function() {
+//             document.getElementById("errorMessage").innerHTML = "入力値にエラーがあります";
+//         }, false);
+//     </script>
