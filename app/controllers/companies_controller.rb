@@ -43,7 +43,7 @@ class CompaniesController < ApplicationController
     
     # newから貰った情報でデータベースに会社を登録
     def create
-        company_params = params.require(:company).permit(:name,:url,:mypage_id,:mypage_pwd,:task1,:due1,:task2,:due2,:task3,:due3,:task4,:due4)
+        company_params = params.require(:company).permit(:name,:url,:mypage_id,:mypage_pwd,:task1,:due1,:task2,:due2,:task3,:due3,:task4,:due4,:memo)
         company_params[:user_id] = session[:user_id]
         @company = Company.new(company_params)
         if @company.save
@@ -62,7 +62,7 @@ class CompaniesController < ApplicationController
     
     # editから貰ったデータを使って実際にデータベースに更新する処理
     def update
-        company_params = params.require(:company).permit(:name,:url,:mypage_id,:mypage_pwd,:task1,:due1,:task2,:due2,:task3,:due3,:task4,:due4)
+        company_params = params.require(:company).permit(:name,:url,:mypage_id,:mypage_pwd,:task1,:due1,:task2,:due2,:task3,:due3,:task4,:due4,:memo)
         if @company.update(company_params)
             flash[:notice] = "データを1件更新しました"
             redirect_to companies_path
