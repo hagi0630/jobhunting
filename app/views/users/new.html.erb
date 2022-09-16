@@ -1,35 +1,36 @@
           <!--新規登録画面-->
-
           <%= stylesheet_link_tag "users",:media=>"all" %>
           <%= form_with model:@user, name:"login_form", url:signup_path, local: true do |f| %>
          <div class="login_form_top">
-            <h1>REGISTER</h1>
-            <p>UserID、Passwordをご入力の上、「REGISTER」ボタンをクリックしてください。</p>
+            <h2>REGISTER</h2>
+            <h4>Passwordは8文字以上です</h4>
         </div>
         <%= link_to "ログインへ", signin_path,class:"blue_color"%>
         <div class="login_form_btm">
             <%= f.text_field :login_id,  placeholder:"UserID(20字以内)",maxlength:"20", required: true %>
-            <%= f.password_field :password, name:"pwd", id:"pwd1",  placeholder:"Password(20字以内)",maxlength:"20",oninput:"CheckPasswordLength()",required: true %>
-            <%= f.password_field :password_confirmation, name:"pwdConfirm", id:"pwd2",  placeholder:"Password(確認用)",maxlength:"20",oninput:"CheckPasswordMatch()", required: true %>
+            <%= f.password_field :password, id:"pwd1",  placeholder:"Password(20字以内)",maxlength:"20",required: true %>
+            <%= f.password_field :password_confirmation,  id:"pwd2",  placeholder:"Password(確認用)",maxlength:"20",oninput:"CheckPasswordMatch()", required: true %>
             <%= f.submit "REGISTER",name:"botton" %>
         </div>
         <% end %>
     </form>
-// <script>
-//         var form = document.forms[0];
-        
-
-//         function CheckPasswordMatch() {
-//             // エラーメッセージをクリアする
-//             form.pwd2.setCustomValidity("");
-//             // パスワードの一致確認
-//             if (form.pwd1.value != form.pwd2.value) {
-//                 // 一致していなかったら、エラーメッセージを表示する
-//                 form.pwd2.setCustomValidity("パスワードと確認用パスワードが一致しません");
-//             }
-//         };
-//         // 入力値チェックエラーが発生したときの処理
-//         form.addEventListener("invalid", function() {
-//             document.getElementById("errorMessage").innerHTML = "入力値にエラーがあります";
-//         }, false);
+ <script>
+        var form = document.forms[0];
+        function CheckPasswordMatch() {
+            // エラーメッセージをクリアする
+            form.pwd2.setCustomValidity("");
+            if (form.pwd1.value.length < 8) {
+                // 8文字未満なら、エラーメッセージを表示する
+                form.pwd1.setCustomValidity("パスワードは8文字以上にしてください");
+            }
+            // パスワードの一致確認
+            else if (form.pwd1.value != form.pwd2.value) {
+                // 一致していなかったら、エラーメッセージを表示する
+                form.pwd2.setCustomValidity("パスワードと確認用パスワードが一致しません");
+            }
+        };
+        // 入力値チェックエラーが発生したときの処理
+        form.addEventListener("invalid", function() {
+            document.getElementById("errorMessage").innerHTML = "入力値にエラーがあります";
+        }, false);
 //     </script>

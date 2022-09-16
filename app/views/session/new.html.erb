@@ -2,7 +2,7 @@
         <%= stylesheet_link_tag "users",:media=>"all" %>
         <%= form_with model:@user, name:"login_form", url:signin_path, local: true do |f| %>
         <div class="login_form_top">
-            <h1>LOGIN</h1>
+            <h2>LOGIN</h2>
             <p>UserID、Passwordをご入力の上、「LOGIN」ボタンをクリックしてください。</p>
         </div>
         <%= link_to "新規登録へ", signup_path , class:"blue_color"%>
@@ -13,19 +13,3 @@
         </div>
         <% end %>
     </form>
-    <script>
-        var form = document.forms[0];
-        function CheckPassword() {
-            // エラーメッセージをクリアする
-            form.pwd2.setCustomValidity("");
-            // パスワードの一致確認
-            if (form.pwd1.value != form.pwd2.value) {
-                // 一致していなかったら、エラーメッセージを表示する
-                form.pwd2.setCustomValidity("パスワードと確認用パスワードが一致しません");
-            }
-        };
-        // 入力値チェックエラーが発生したときの処理
-        form.addEventListener("invalid", function() {
-            document.getElementById("errorMessage").innerHTML = "入力値にエラーがあります";
-        }, false);
-    </script>
