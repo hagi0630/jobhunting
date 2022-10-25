@@ -131,6 +131,14 @@ class CompaniesController < ApplicationController
     
     def new_schedule
         company_params = params.require(:company).permit(:name,:task,:due)
+        logger.debug(company_params)
+        logger.debug(company_params[:name])
+        logger.debug(company_params[:name].blank?)
+        if company_params[:name].blank? || company_params[:task].blank? || company_params[:due].blank?
+            flash[:alert] = "全て記入してください"
+            logger.debug("*******************")
+            redirect_to companies_path
+        end
         company = Company.where(user_id: session[:user_id]).find_by(name:company_params[:name])
         if company.task1.blank? && company.due1.blank?
             company.task1 = company_params[:task]
@@ -151,7 +159,11 @@ class CompaniesController < ApplicationController
         else
             flash[:alert] = "taskとdueが満杯です。"
         end
-        company.save
+        if company.save
+            flash[:notice] = "登録しました"
+        else
+            flash[:alert] = "登録に失敗しました"
+        end
         redirect_to schedule_path
     end
     # {"name"=>"freee", "task"=>"aa", "due"=>"2022/08/29 02:00"}
@@ -173,7 +185,6 @@ class CompaniesController < ApplicationController
     if credentials.nil?
       code = session[:code]
       url = authorizer.get_authorization_url(base_url: REDIRECT_URI)
-      logger.debug(url)
       credentials = authorizer.get_and_store_credentials_from_code(
         user_id: user_id, code: code, base_url: REDIRECT_URI
       )
